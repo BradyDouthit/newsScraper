@@ -1,7 +1,7 @@
-$.getJSON("/articles", function(data) {
-    // For each one
-    for (var i = 0; i < data.length; i++) {
-      // Display the apropos information on the page
-      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].paragraph + "<br />" + data[i].link + "</p>");
-    }
-  });
+$.getJSON("/articles", function (data) {    
+    data.forEach(Element => {
+        $('#articles').append(
+            `<h2>${Element.title}</h2><a href="${Element.link}" target="_blank">The original article</a><p>${Element.paragraph}</p>`
+        );
+    });
+});
