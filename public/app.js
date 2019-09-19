@@ -8,7 +8,7 @@ $.getJSON("/articles", function (data) {
                 <p>${Element.paragraph}</p>
                 </a>
                 <input data-id="${Element._id}" type="text" id="comment" placeholder="Wow! Very cool!">
-                <button data-id="${Element._id}" id="comment-button">ADD A COMMENT</button>
+                <button data-id="${Element._id}" id="comment-button">Add a comment</button>
             </div>`
         );
     });
