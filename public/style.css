@@ -31,6 +31,7 @@ a {
     text-decoration: none;
     color: lightblue
 }
+
 #comment {
     color: white;
     background-color: black;
@@ -38,13 +39,29 @@ a {
     border-radius: 3px;
     padding: 5px;
 }
+
 #comment-button:hover {
     cursor: pointer;
 }
+
 #comment-button {
-    color: white;
+    font-family: 'Shadows Into Light', cursive;
+    color: lightgreen;
     background-color: black;
     border: none;
     border-radius: 3px;
     padding: 5px;
+}
+
+#p-link {
+    color: white;
+}
+
+#summary-h4 {
+    color: lightgreen
+}
+
+::placeholder {
+    color: lightgreen;
+    opacity: 0.5;
 }

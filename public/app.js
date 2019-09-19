@@ -3,8 +3,10 @@ $.getJSON("/articles", function (data) {
         $('#articles').append(
             `<div class="article">
                 <h2>${Element.title}</h2>
-                <a href="${Element.link}" target="_blank">The original article</a>
-                <p>${Element.paragraph}</p> 
+                <h4 id="summary-h4">Click a summary to view the full article</h4>
+                <a id="p-link" href="${Element.link}" target="_blank"
+                <p>${Element.paragraph}</p>
+                </a>
                 <input data-id="${Element._id}" type="text" id="comment" placeholder="Wow! Very cool!">
                 <button data-id="${Element._id}" id="comment-button">ADD A COMMENT</button>
             </div>`
