@@ -32,7 +32,7 @@ a {
     color: lightblue
 }
 
-#comment {
+.comment-field {
     color: white;
     background-color: black;
     border: none;
@@ -63,4 +63,9 @@ a {
 ::placeholder {
     color: lightgreen;
     opacity: 0.5;
+}
+
+#comments {
+    color: white;
+    position: fixed;
 }
