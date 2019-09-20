@@ -52,6 +52,19 @@ a {
     padding: 5px;
 }
 
+#view-comment-button {
+    color: lightgreen;
+    background-color: black;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+#view-comment-button:hover {
+    cursor: pointer;
+}
+
 #p-link {
     color: white;
 }
@@ -65,7 +78,5 @@ a {
     opacity: 0.5;
 }
 
-#comments {
-    color: white;
-    position: fixed;
+.comments {
 }
