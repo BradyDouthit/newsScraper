@@ -7,7 +7,9 @@ html {
 h2 {
     font-size: 25px;
 }
-
+button:focus {
+    outline-color: lightgreen;
+}
 #articles {
     max-width: 500px;
     margin: 0 auto;
@@ -52,7 +54,7 @@ a {
     padding: 5px;
 }
 
-#view-comment-button {
+#view-comment-button, #hide-button {
     color: lightgreen;
     background-color: black;
     border: none;
@@ -61,7 +63,7 @@ a {
     margin-top: 15px;
 }
 
-#view-comment-button:hover {
+#view-comment-button, #hide-button:hover {
     cursor: pointer;
 }
 
@@ -78,5 +80,21 @@ a {
     opacity: 0.5;
 }
 
-.comments {
+.delete-button {
+    border: none;
+    color: lightgreen;
+    background: none;
+}
+
+.delete-button:hover {
+    cursor: pointer;
+}
+
+.edit-button {
+    border: none;
+    color: lightgreen;
+    background: none;
+}
+.edit-button:hover {
+    cursor: pointer;
 }
