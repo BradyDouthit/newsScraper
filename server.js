@@ -1,6 +1,8 @@
 var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper";
+
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -28,7 +30,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/scraper", { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI);
 
 // Routes
 app.get('/', function (req, res) {
@@ -112,8 +114,8 @@ app.post("/articles/:id", function (req, res) {
             // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
             // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
             // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-            console.log(dbComment);
-            console.log(dbComment._id)
+            //console.log(dbComment);
+            //console.log(dbComment._id)
             return article.findOneAndUpdate({ _id: req.params.id }, { $push: { comment: dbComment._id } }, { new: true });
         })
         .then(function (dbArticle) {
@@ -132,7 +134,12 @@ app.delete("/articles/:id", function (req, res) {
         
     });
 });
-
+app.put("/articles/:id", function(req, res) {
+    console.log(req.body)
+    comment.findByIdAndUpdate({ _id: req.params.id }, { body: req.body }, { useFindAndModify: true }).then(function(data) {
+        console.log("data.body: " + data.body)
+    })
+})
 // Start the server
 app.listen(PORT, function () {
     console.log("App running on port " + PORT + "!");

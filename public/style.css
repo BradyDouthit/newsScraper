@@ -34,7 +34,7 @@ a {
     color: lightblue
 }
 
-.comment-field {
+.comment-field, .edit-comment-input {
     color: white;
     background-color: black;
     border: none;
@@ -46,7 +46,7 @@ a {
     cursor: pointer;
 }
 
-#comment-button {
+#comment-button, .edit-comment-submit-button {
     color: lightgreen;
     background-color: black;
     border: none;

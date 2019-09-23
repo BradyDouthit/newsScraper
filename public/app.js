@@ -44,10 +44,13 @@ $(document).on('click', '#comment-button', function (event) {
                 $('#comments-holder' + thisId).append(`
                     <div class="comments" id="comment-ID${newCommentObj._id}">
                         <button data-id="${newCommentObj._id}" class="delete-button" id="delete-ID${newCommentObj._id}">X</button>
-                        <button data-id="${newCommentObj._id}" class="edit-button" id="edit-ID${newCommentObj._id}">Edit</button>
+                        <button data-id="${newCommentObj.id}" class="edit-button" id="edit-ID${newCommentObj._id}">Edit</button>
+                        <div data-id="${newCommentObj._id}" id="${newCommentObj._id}" class="comment-body">
                         ${newCommentObj.body}
+                        </div>
                     </div>
                 `)
+                location.reload();
             });
         });
 });
@@ -67,7 +70,9 @@ $(document).on('click', '#view-comment-button', function (event) {
             <div class="comments" id="comment-ID${Element._id}">
                 <button data-id="${Element._id}" class="delete-button" id="delete-ID${Element._id}">X</button>
                 <button data-id="${Element._id}" class="edit-button" id="edit-ID${Element._id}">Edit</button>
-                ${Element.body}
+                <div data-id="${Element._id}" id="${Element._id}" class="comment-body">
+                    ${Element.body}
+                </div>
             </div>
             `)
         });
@@ -96,4 +101,36 @@ $(document).on('click', '.delete-button', function (event) {
     setTimeout(function() {
         location.reload();
     }, 500)
+})
+
+$(document).on('click', '.edit-button', function (event) {
+    event.preventDefault();
+
+    let thisId = $(this).attr("data-id");
+    console.log(thisId)
+    $("#" + thisId).append(`
+        <input type="text" placeholder="Enter modification here" data-id="${thisId}" class="edit-comment-input" id="updated${thisId}">
+        <button data-id="${thisId}" id="${thisId}" class="edit-comment-submit-button">Submit</button>
+    `)
+    
+});
+
+$(document).on('click', '.edit-comment-submit-button', function (event) {
+    event.preventDefault();
+
+    let thisId = $(this).attr("data-id");
+    //console.log(thisId)
+    let updatedComment = $('#updated' + thisId).val().trim();
+    console.log(updatedComment);
+    $.get('/articles/' + thisId, function (articles) {
+        console.log(articles)
+        });
+    $.ajax({
+        method: "PUT",
+        url: '/articles/' + thisId,
+        data: {"body": updatedComment}
+    }).then(function(data) {
+        console.log(data)
+    })
+    
 })
